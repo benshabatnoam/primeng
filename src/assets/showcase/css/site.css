@@ -172,6 +172,13 @@ body {
     vertical-align: middle;
 }
 
+.topbar-menu > li.topbar-menu-themes > ul a .topbar-submenu-icon {
+    font-size: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
 .topbar-menu > li.topbar-menu-themes > ul a .ui-text {
     vertical-align: middle;
     margin-left: 8px;
@@ -304,7 +311,7 @@ body {
     color: #6d7879;
 }
 
-#layout-sidebar .layout-menu > div a .menuitem-badge {
+.menuitem-badge {
     background: linear-gradient(-180deg, #60E17A 0%, #49BD61 100%);
     padding: 2px 4px;
     vertical-align: middle;
@@ -420,7 +427,7 @@ body {
 .content-submenu ul li {
     list-style: none;
     width: 20%;
-    float: left;
+    display: inline-block;
     margin-top: 5px;
 }
 .content-submenu ul li a {
@@ -435,7 +442,6 @@ body {
 .content-submenu ul li a:hover {
     border: 1px solid #ffffff;
     color: #ffffff;
-
 }
 
 /* Documentation Section */
@@ -1013,6 +1019,7 @@ a {
 
 .home .why-templates img {
     width: 100%;
+    margin-bottom: 30px;
 }
 
 .home .why-templates .ui-g > div {
@@ -1030,6 +1037,23 @@ a {
     padding-bottom: 10px;
     text-align: left;
     text-align: center;
+}
+
+/* Designer */
+.home .primeng-designer {
+    background-color: #ffffff;
+    padding: 30px;
+}
+
+.home .primeng-designer h3 {
+    margin: 10px 0 20px 0;
+    display: block;
+    text-align: center;
+}
+
+.home .primeng-designer img {
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 /* PRO */
