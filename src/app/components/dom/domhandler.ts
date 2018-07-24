@@ -109,7 +109,7 @@ export class DomHandler {
         element.style.left = left + 'px';
     }
 
-    public absolutePosition(element: any, target: any): void {
+    public absolutePosition(element: any, target: any, rtl: boolean = false): void {
         let elementDimensions = element.offsetParent ? { width: element.offsetWidth, height: element.offsetHeight } : this.getHiddenElementDimensions(element);
         let elementOuterHeight = elementDimensions.height;
         let elementOuterWidth = elementDimensions.width;
@@ -119,6 +119,7 @@ export class DomHandler {
         let windowScrollTop = this.getWindowScrollTop();
         let windowScrollLeft = this.getWindowScrollLeft();
         let viewport = this.getViewport();
+        let clientWidth = document.documentElement.clientWidth;
         let top, left;
 
         if (targetOffset.top + targetOuterHeight + elementOuterHeight > viewport.height) {
@@ -130,13 +131,21 @@ export class DomHandler {
         else {
             top = targetOuterHeight + targetOffset.top + windowScrollTop;
         }
-
-        if (targetOffset.left + targetOuterWidth + elementOuterWidth > viewport.width)
-            left = targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth;
-        else
-            left = targetOffset.left + windowScrollLeft;
-
         element.style.top = top + 'px';
+
+        if (rtl) {
+            if (clientWidth - targetOffset.right + elementOuterWidth > viewport.width) {
+                left = targetOffset.left + windowScrollLeft;
+            } else {
+                left = targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth;
+            }
+        } else {
+            if (targetOffset.left + targetOuterWidth + elementOuterWidth > viewport.width) {
+                left = targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth;
+            } else {
+                left = targetOffset.left + windowScrollLeft;
+            }
+        }
         element.style.left = left + 'px';
     }
 

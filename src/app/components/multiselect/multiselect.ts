@@ -142,7 +142,9 @@ export class MultiSelect implements OnInit,AfterViewInit,AfterContentInit,AfterV
     @Input() optionLabel: string;
 
     @Input() showHeader: boolean = true;
-    
+
+    @Input() rtl: boolean = false;
+        
     @ViewChild('container') containerViewChild: ElementRef;
     
     @ViewChild('filterInput') filterInputChild: ElementRef;
@@ -240,7 +242,6 @@ export class MultiSelect implements OnInit,AfterViewInit,AfterContentInit,AfterV
     ngAfterViewChecked() {
         if(this.filtered) {
             this.alignOverlay();
-
             this.filtered = false;
         }
     }
@@ -376,7 +377,7 @@ export class MultiSelect implements OnInit,AfterViewInit,AfterContentInit,AfterV
 
     alignOverlay() {
         if(this.appendTo)
-            this.domHandler.absolutePosition(this.overlay, this.containerViewChild.nativeElement);
+            this.domHandler.absolutePosition(this.overlay, this.containerViewChild.nativeElement, this.rtl);
         else
             this.domHandler.relativePosition(this.overlay, this.containerViewChild.nativeElement);
     }
